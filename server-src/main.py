@@ -37,10 +37,12 @@ async def get_plot():
         lines = file.readlines()
         for line in lines:
             l = line.split(",")
-            x.append(float(l[0]))
-            timestamp = int(l[1])
+            if len(l) != 2:
+                continue
+            timestamp = int(l[0])
             time = datetime.datetime.fromtimestamp(timestamp)
-            y.append(time)
+            x.append(time)
+            y.append(float(l[1]))
 
     # Create a plot
     plt.figure(figsize=(10, 6))
