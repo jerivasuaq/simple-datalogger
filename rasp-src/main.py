@@ -3,7 +3,7 @@
 import RPi.GPIO as GPIO
 import time
 
-from fastapi import requests
+import requests
 import smbus
 
 # Load data from .env file
