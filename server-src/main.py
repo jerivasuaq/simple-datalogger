@@ -18,7 +18,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/test.html", response_class=HTMLResponse)
+@app.get("/dashboard.html", response_class=HTMLResponse)
 async def test(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "message": "Welcome to FastAPI!"})
 
