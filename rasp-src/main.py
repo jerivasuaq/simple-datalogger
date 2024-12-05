@@ -72,7 +72,7 @@ def main():
         lcd_string(temp,LCD_LINE_2)
 
         # push data to server http://{SERVER_IP}/new_point/{index}/{value} with python
-        url = f"http://{SERVER_IP}/new_point/1/{temp}"
+        url = f"http://{SERVER_IP}:8000/new_point/1/{temp}"
         response = requests.get(url)
 
         # Checking the response status code
