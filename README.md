@@ -69,4 +69,6 @@ python main.py
 
 # Check the results
 
-Go to 
+With the `SERVER_IP`
+
+Go to http://SERVER_IP:8000/dashboard.html
