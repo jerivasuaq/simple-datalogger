@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smoke Sensor</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
+    <script>
+        setInterval(function () {
+            var img = document.getElementById('sensorImage');
+            img.src = '/plot?' + new Date().getTime();
+        }, 1000);
+
+    </script>
     <div class="header">
         <h1>Facebook Style Smoke Sensor</h1>
     </div>
@@ -14,8 +23,9 @@
         <div class="post">
             <h2>Smoke Sensor Data</h2>
             <p>Below is the latest smoke sensor plot:</p>
-            <img src="/plot" alt="Smoke Sensor Plot">
+            <img id="sensorImage" src="/plot" alt="Smoke Sensor Plot">
         </div>
     </div>
 </body>
+
 </html>

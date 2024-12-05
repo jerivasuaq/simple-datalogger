@@ -71,9 +71,17 @@ def main():
         lcd_string("MQ-2", LCD_LINE_1)
         lcd_string(temp, LCD_LINE_2)
 
-        # push data to server http://{SERVER_IP}/new_point/{index}/{value} with python
-        timestamp = int(time.time())
-        url = f"http://{SERVER_IP}:8000/new_point/{timestamp}/{temp}"
+        push_data(temp)
+
+        time.sleep(1)
+
+
+def push_data(temp):
+    # push data to server http://{SERVER_IP}/new_point/{index}/{value} with python
+    timestamp = int(time.time())
+    url = f"http://{SERVER_IP}:8000/new_point/{timestamp}/{temp}"
+
+    try:
         response = requests.get(url)
 
         # Checking the response status code
@@ -82,8 +90,10 @@ def main():
         else:
             print(f"Failed with status code: {response.status_code}")
             print(response.text)  # Detailed response body
-
-        time.sleep(1)
+    except requests.exceptions.RequestException as e:
+        print(e)
+    except Exception as e:
+        print(e)
 
 
 # LM35, require Temperature
