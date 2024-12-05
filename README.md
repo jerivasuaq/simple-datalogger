@@ -71,4 +71,6 @@ python main.py
 
 With the `SERVER_IP`
 
-Go to http://SERVER_IP:8000/dashboard.html
+Go to 
+
+[http://SERVER_IP:8000/dashboard.html](http://SERVER_IP:8000/dashboard.html)
