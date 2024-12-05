@@ -2,6 +2,8 @@
 #import
 import RPi.GPIO as GPIO
 import time
+
+from fastapi import requests
 import smbus
 
 # Load data from .env file
@@ -68,6 +70,12 @@ def main():
         # Send some test
         lcd_string("MQ-2",LCD_LINE_1)
         lcd_string(temp,LCD_LINE_2)
+
+        # push data to server http://{SERVER_IP}/new_point/{index}/{value} with python
+        request = requests.get(f"http://{SERVER_IP}/new_point/1/{temp}")
+        
+
+
         time.sleep(0.1)
 
 #LM35, require Temperature
