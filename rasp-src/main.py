@@ -72,7 +72,16 @@ def main():
         lcd_string(temp,LCD_LINE_2)
 
         # push data to server http://{SERVER_IP}/new_point/{index}/{value} with python
-        request = requests.get(f"http://{SERVER_IP}/new_point/1/{temp}")
+        url = f"http://{SERVER_IP}/new_point/1/{temp}"
+        response = requests.get(url)
+
+        # Checking the response status code
+        if response.status_code == 200:
+            print(".")
+        else:
+            print(f"Failed with status code: {response.status_code}")
+            print(response.text)  # Detailed response body
+
         
 
 
