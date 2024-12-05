@@ -1,3 +1,4 @@
+import datetime
 import io
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -37,7 +38,9 @@ async def get_plot():
         for line in lines:
             l = line.split(",")
             x.append(float(l[0]))
-            y.append(float(l[1]))
+            timestamp = int(l[1])
+            time = datetime.datetime.fromtimestamp(timestamp)
+            y.append(time)
 
     # Create a plot
     plt.figure(figsize=(10, 6))
